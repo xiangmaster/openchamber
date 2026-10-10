@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Generate bot app token
         id: app-token
-        run: echo "token=${{ secrets.OC_BOT_PAT }}" >> "$GITHUB_OUTPUT"
+        run: echo "token=${{ github.token }}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -124,4 +124,5 @@ jobs:
 
           echo "::error::issue-intake finished without posting a comment on #${ISSUE_NUMBER} (last opencode run exit ${status})"
           exit 1
+
 
