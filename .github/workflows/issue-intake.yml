@@ -99,7 +99,7 @@ jobs:
           # accept either so a rename on one side cannot make the check drift.
           bot_comments() {
             gh issue view "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --json comments \
-              --jq '[.comments[] | (.author.login // "")] | map(select(. == "openchamber-bot" or . == "openchamber-bot[bot]" or . == "github-actions[bot]")) | length'
+              --jq '[.comments[] | (.author.login // "")] | map(select(. == "openchamber-bot" or . == "openchamber-bot[bot]" or . == "github-actions[bot]" or . == "github-actions")) | length'
           }
 
           before="$(bot_comments)" || {
