@@ -215,22 +215,20 @@ export const WorkStatusPanel: React.FC<Props> = ({ sessionId, directory, visible
           'absolute right-3 top-3 z-30 mx-0 my-0',
           'max-h-[calc(100%-1.5rem)]',
         ],
-        // When every section is hidden the card keeps its border and background
+        // When every section is hidden the card keeps its edge and background
         // so the settings button stays discoverable — going transparent made the
         // only recovery path unreachable.
         'motion-reduce:transition-none',
-        'rounded-xl border border-[var(--interactive-border)]',
+        // Beside the chat: the layout panels' ring (`oc-panel-edge`, shared
+        // with the context panel card). Over the chat it is a dropdown and
+        // takes the dropdown's full edge (`data-edge-floating`).
+        'oc-panel-edge rounded-xl',
         !overlay && 'bg-[var(--surface-muted)]/40',
-        // A lighter version of the composer's lift: the same shape, but this
-        // card is taller, so the composer's spread reads as heavy here.
-        // The overlay keeps it too: a heavier one spread past the chat column,
-        // which clips it where the context panel begins.
-        'shadow-[0_2px_8px_-3px_rgb(0_0_0_/_0.08)]',
-        // Last, so it wins over the border and shadow above. Hidden, the
-        // overlay's border and shadow go transparent and transition alongside
-        // the glass fade: see the opacity note below.
-        overlay && !interactive && 'border-transparent shadow-none',
       )}
+      // Hidden, the overlay's edge fades out alongside the glass fade: see
+      // the opacity note below.
+      data-edge-hidden={overlay && !interactive ? '' : undefined}
+      data-edge-floating={overlay ? '' : undefined}
       style={{
         // The overlay keeps its width: it takes no space from the chat, so
         // collapsing it would animate a dimension nothing depends on. It fades
@@ -249,7 +247,7 @@ export const WorkStatusPanel: React.FC<Props> = ({ sessionId, directory, visible
             // reads as sliding out past the window edge.
             : `translateX(${WORK_STATUS_PANEL_WIDTH / 4}px)`,
         transformOrigin: 'top right',
-        transitionProperty: overlay ? 'transform, box-shadow, border-color' : 'width, opacity, transform, margin',
+        transitionProperty: overlay ? 'transform, box-shadow' : 'width, opacity, transform, margin',
         transitionDuration: `${PANEL_TRANSITION_MS}ms`,
         transitionTimingFunction: PANEL_TRANSITION_EASING,
         pointerEvents: interactive ? undefined : 'none',

@@ -1244,8 +1244,9 @@ export const ContextPanel: React.FC = () => {
           'relative z-10 flex h-full min-h-0 shrink-0 flex-col duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none',
           // A framed card, inset from the chat: its own border and radius rather
           // than a divider running the height of the window.
-          // Same lift as the work-status card.
-          'overflow-hidden rounded-[10px] border border-border bg-background shadow-[0_2px_8px_-3px_rgb(0_0_0_/_0.08)]',
+          // The dropdown's hairline ring (`oc-panel-edge`), shared with the
+          // work-status card.
+          'oc-panel-edge overflow-hidden rounded-[10px] bg-background',
           // Width animates in sync with the panel (surface switches, resize
           // release); during the drag itself nothing resizes — only the ghost
           // guide line moves.
