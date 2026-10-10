@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Generate bot app token
         id: app-token
-        run: echo "token=${{ github.token }}" >> "$GITHUB_OUTPUT"
+        run: echo "token=${{ secrets.OC_BOT_PAT }}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -99,7 +99,7 @@ jobs:
           # accept either so a rename on one side cannot make the check drift.
           bot_comments() {
             gh issue view "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --json comments \
-              --jq '[.comments[] | (.author.login // "")] | map(select(. == "openchamber-bot" or . == "openchamber-bot[bot]" or . == "github-actions[bot]" or . == "github-actions")) | length'
+              --jq '[.comments[] | (.author.login // "")] | map(select(. == "openchamber-bot" or . == "openchamber-bot[bot]" or . == "github-actions[bot]" or . == "github-actions" or . == "xiangmaster")) | length'
           }
 
           before="$(bot_comments)" || {
@@ -124,3 +124,4 @@ jobs:
 
           echo "::error::issue-intake finished without posting a comment on #${ISSUE_NUMBER} (last opencode run exit ${status})"
           exit 1
+
