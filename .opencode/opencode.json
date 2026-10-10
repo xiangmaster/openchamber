@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "labgw/gpt-5.6-luna",
   "lsp": {
     "tailwindcss": {
       "command": [
