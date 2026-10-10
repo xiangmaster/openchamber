@@ -1,7 +1,7 @@
 ---
 mode: primary
 hidden: true
-model: opencode-go/mimo-v2.5
+model: labgw/gpt-5.6-luna
 color: "#c4920a"
 permission:
   edit: allow

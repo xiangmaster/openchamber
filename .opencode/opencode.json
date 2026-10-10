@@ -2,32 +2,91 @@
   "$schema": "https://opencode.ai/config.json",
   "lsp": {
     "tailwindcss": {
-      "command": ["tailwindcss-language-server", "--stdio"],
-      "extensions": [".ts", ".tsx", ".js", ".jsx", ".css", ".html"]
+      "command": [
+        "tailwindcss-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".css",
+        ".html"
+      ]
     },
     "css": {
-      "command": ["vscode-css-language-server", "--stdio"],
-      "extensions": [".css", ".scss", ".less"]
+      "command": [
+        "vscode-css-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".css",
+        ".scss",
+        ".less"
+      ]
     },
     "html": {
-      "command": ["vscode-html-language-server", "--stdio"],
-      "extensions": [".html"]
+      "command": [
+        "vscode-html-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".html"
+      ]
     },
     "json": {
-      "command": ["vscode-json-language-server", "--stdio"],
-      "extensions": [".json", ".jsonc"]
+      "command": [
+        "vscode-json-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".json",
+        ".jsonc"
+      ]
     },
     "mdx": {
-      "command": ["mdx-language-server", "--stdio"],
-      "extensions": [".mdx"]
+      "command": [
+        "mdx-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".mdx"
+      ]
     },
     "marksman": {
-      "command": ["marksman", "server"],
-      "extensions": [".md"]
+      "command": [
+        "marksman",
+        "server"
+      ],
+      "extensions": [
+        ".md"
+      ]
     },
     "dockerfile": {
-      "command": ["docker-langserver", "--stdio"],
-      "extensions": ["Dockerfile", ".dockerfile"]
+      "command": [
+        "docker-langserver",
+        "--stdio"
+      ],
+      "extensions": [
+        "Dockerfile",
+        ".dockerfile"
+      ]
+    }
+  },
+  "provider": {
+    "labgw": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "labgw",
+      "options": {
+        "baseURL": "https://api.openlux.ai/v1",
+        "apiKey": "{env:OPENCODE_API_KEY}"
+      },
+      "models": {
+        "gpt-5.6-luna": {},
+        "gpt-5.6-sol": {},
+        "kimi-k2.7-code": {}
+      }
     }
   }
 }
